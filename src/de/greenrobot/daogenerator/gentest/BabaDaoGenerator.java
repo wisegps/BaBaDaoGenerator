@@ -30,7 +30,7 @@ public class BabaDaoGenerator {
 		Schema schema = new Schema(2, "com.wise.baba.db.dao");
 
 		addSuggestion(schema);
-		addFriendList(schema);
+		addFriendData(schema);
 
 		new DaoGenerator().generateAll(schema, "../baba/src");
 	}
@@ -44,8 +44,8 @@ public class BabaDaoGenerator {
 		suggestion.addDateProperty("date");
 	}
 	
-	private static void addFriendList(Schema schema) {
-		Entity friendList = schema.addEntity("FriendList");
+	private static void addFriendData(Schema schema) {
+		Entity friendList = schema.addEntity("FriendData");
 		friendList.addStringProperty("create_time");
 		friendList.addIntProperty("sex");
 	    friendList.addStringProperty("logo");
@@ -54,7 +54,8 @@ public class BabaDaoGenerator {
 	    friendList.addIntProperty("friend_id");
 	    friendList.addIntProperty("user_id");
 	    friendList.addIntProperty("friend_relat_id");
-	    friendList.addStringProperty("rights");//保存json字符串
+	    friendList.addStringProperty("Group_letter");
+	   // friendList.addStringProperty("rights");//保存json字符串
 	}
 
 }
