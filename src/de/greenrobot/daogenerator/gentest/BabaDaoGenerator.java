@@ -31,10 +31,17 @@ public class BabaDaoGenerator {
 
 		addSuggestion(schema);
 		addFriendData(schema);
+		addFriendAuth(schema);
 
 		new DaoGenerator().generateAll(schema, "../baba/src");
 	}
 
+
+	/**
+	 * 百度搜索建议词表
+	 * @param schema
+	 */
+	
 	private static void addSuggestion(Schema schema) {
 		Entity suggestion = schema.addEntity("Suggestion");
 		suggestion.addIntProperty("type");
@@ -44,6 +51,11 @@ public class BabaDaoGenerator {
 		suggestion.addDateProperty("date");
 	}
 	
+	
+	/**
+	 * 好友列表
+	 * @param schema
+	 */
 	private static void addFriendData(Schema schema) {
 		Entity friendList = schema.addEntity("FriendData");
 		friendList.addStringProperty("create_time");
@@ -57,5 +69,29 @@ public class BabaDaoGenerator {
 	    friendList.addStringProperty("Group_letter");
 	   // friendList.addStringProperty("rights");//保存json字符串
 	}
+	
+	/**
+	 * 权限表
+	 * @param schema
+	 */
+	private static void addAuthorization(Schema schema) {
+		Entity auth = schema.addEntity("Authorization");
+		auth.addIntProperty("authCode");
+		auth.addStringProperty("des");
+		auth.addStringProperty("des1");
+	}
+	
+	/**
+	 * 好友，权限对应表
+	 * @param schema
+	 */
+	private static void addFriendAuth(Schema schema) {
+		Entity friendAuth = schema.addEntity("FriendAuth");
+		friendAuth.addStringProperty("id");
+		friendAuth.addStringProperty("friendId");
+		friendAuth.addIntProperty("authCode");
+	}
+	
+	
 
 }
